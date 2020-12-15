@@ -22,9 +22,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'nvie/vim-flake8'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 call plug#end()
 
@@ -52,11 +49,3 @@ au BufNewFile,BufRead *.py
     \ set softtabstop=4
     \ set shiftwidth=4
     \set encoding=utf-8
-
-
-function MyCustomHighlights()
-    hi semshiGlobal      ctermfg=red guifg=#ff0000
-endfunction
-autocmd FileType python call MyCustomHighlights()
-
-autocmd ColorScheme * call MyCustomHighlights()
