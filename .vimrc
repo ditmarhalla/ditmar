@@ -15,13 +15,18 @@ set undofile
 set incsearch
 set t_Co=256
 set cursorline
-
+set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
+Plug 'davidhalter/jedi-vim'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'sheerun/vim-polyglot'
+Plug 'https://github.com/ervandew/supertab'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -42,10 +47,3 @@ nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 autocmd FileType python map <buffer> <C-9> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
 
-au BufNewFile,BufRead *.py
-    \ set expandtab       |" replace tabs with spaces
-    \ set autoindent      |" copy indent when starting a new line
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \set encoding=utf-8
