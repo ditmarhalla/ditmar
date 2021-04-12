@@ -2,6 +2,7 @@ syntax on
 
 set noerrorbells
 set tabstop=4 softtabstop=4
+set belloff=all
 set shiftwidth=4
 set expandtab
 set smartindent
@@ -26,7 +27,6 @@ Plug 'davidhalter/jedi-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/ervandew/supertab'
-Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -46,4 +46,3 @@ nnoremap <leader>u :UndotreeShow<CR>
 
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 autocmd FileType python map <buffer> <C-9> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
-
