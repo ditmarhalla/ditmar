@@ -1,12 +1,14 @@
 syntax on
 
-set noerrorbells
+set nu
+set relativenumber
+set nohlsearch
+set hidden
 set tabstop=4 softtabstop=4
 set belloff=all
 set shiftwidth=4
 set expandtab
 set smartindent
-set nu
 set nowrap
 set smartcase
 set noswapfile
@@ -17,6 +19,10 @@ set incsearch
 set t_Co=256
 set cursorline
 set nocompatible
+set noerrorbells
+set scrolloff=8
+set signcolumn=yes
+
 
 call plug#begin('~/.vim/plugged')
 
