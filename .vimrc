@@ -26,19 +26,27 @@ set signcolumn=yes
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'morhetz/gruvbox'
+Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
-Plug 'davidhalter/jedi-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/ervandew/supertab'
+Plug 'mfukar/robotframework-vim' 
+Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'sheerun/vim-polyglot'
+Plug 'davidhalter/jedi-vim'
+Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
-colorscheme onehalflight
-let g:airline_theme='onehalfdark'
-let python_highlight_all=1
+colorscheme gruvbox
+set background =dark
+
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
+
 let mapleader = " "
 let g:netrw_browse_split=2
 let g:netrw_banner = 0
@@ -49,6 +57,16 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
-
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-autocmd FileType python map <buffer> <C-9> :w<CR>:exec '!python' shellescape(@%, 1)<CR>
+nnoremap <leader>ps :Rg<SPACE>
+nnoremap <leader>+ :vertical resize +5<CR>
+nnoremap <leader>- :vertical resize -5<CR>
+
+nnoremap <leader>gd :YcmCompleter GoTo<CR>
+nnoremap <leader>gf :YcmCompleter GoToSymbol<CR>
+nnoremap <leader>gh :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>ru :!python3 %<CR>
+
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
