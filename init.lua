@@ -430,10 +430,13 @@ cmp.setup {
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
--- Set highlight on search
-vim.o.relativenumber= true
-vim.o.scrolloff=8
-vim.o.wrap=false
-vim.o.background="dark"
+--
+vim.o.relativenumber= true      -- relative numers  except the current line
+vim.o.scrolloff=8               -- stop scrolling when you get to 8 lines before end
+vim.o.wrap=false                -- dont wrap long lines
+vim.o.background="dark"         -- set dark background
+vim.o.cursorline=true           -- highlight current line
+
+
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
