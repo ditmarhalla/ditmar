@@ -55,6 +55,13 @@ require('packer').startup(function(use)
 
   use 'ellisonleao/gruvbox.nvim'
   use 'mbbill/undotree'
+  use {
+  'DaikyXendo/nvim-tree.lua',
+  requires = {
+    'DaikyXendo/nvim-material-icon', -- optional, for file icons
+  },
+  tag = 'nightly' -- optional, updated every week. (see issue #1193)
+}
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -430,13 +437,49 @@ cmp.setup {
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
---
+---------------------------------------------------------------------------------------------
 vim.o.relativenumber= true      -- relative numers  except the current line
 vim.o.scrolloff=8               -- stop scrolling when you get to 8 lines before end
 vim.o.wrap=false                -- dont wrap long lines
 vim.o.background="dark"         -- set dark background
 vim.o.cursorline=true           -- highlight current line
 
-
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+--vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<leader>pv", vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", "<leader>h", ":wincmd h<CR>")
+vim.keymap.set("n", "<leader>l", ":wincmd l<CR>")
+
+-- examples for your init.lua
+
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- empty setup using defaults
+require("nvim-tree").setup()
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+
+
+require'nvim-material-icon'.setup {
+  color_icons = true;
+  default = true;
+}
